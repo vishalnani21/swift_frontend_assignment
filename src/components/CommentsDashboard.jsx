@@ -38,7 +38,7 @@ export default function CommentsDashboard() {
   }
 
 
-  
+
 const fetchUserData=async()=>{
     try {
         const res = await axios.get('https://jsonplaceholder.typicode.com/users');
@@ -53,7 +53,7 @@ const fetchUserData=async()=>{
 
 
   useEffect(() => {
-    if (comments.length === 0) {
+    if (comments?.length === 0) {
      fetchData();
      fetchUserData();
     }

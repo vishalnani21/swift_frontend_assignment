@@ -53,7 +53,7 @@ const fetchUserData=async()=>{
 
 
   useEffect(() => {
-    if (comments?.length === 0) {
+    if (!Array.isArray(comments) || comments.length === 0) {
      fetchData();
      fetchUserData();
     }

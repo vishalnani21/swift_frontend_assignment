@@ -1,12 +1,71 @@
-# React + Vite
+***🧾 Comments Dashboard (with Profile)***
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+An interactive web dashboard built using React, Redux Toolkit, and Tailwind CSS with features like:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Comments listing with search, sort, and pagination
 
-## Expanding the ESLint configuration
+Responsive table UI using DaisyUI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Profile page showing user details fetched from an API
+
+State persistence with Redux Persist
+
+
+
+***✨ Features***
+
+🔍 Search through comments by name, email, or phone.
+
+📊 Sort comments dynamically by Post ID, Name, or Email.
+
+📃 Paginate comments (10, 50, 100 per page).
+
+🙋 User Profile Page (read-only) displaying dummy user data.
+
+🎯 Persisted Redux Store — keeps state even after refresh.
+
+🎨 Styled with Tailwind CSS + DaisyUI for modern UI.
+
+🔄 Custom Hook to fetch user data from an API.
+
+***FOLDER STRUCTURE***
+
+```bash
+
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── Body.jsx
+│   ├── CommentsDashboard.jsx
+│   ├── Profile.jsx
+├── utils/
+│   ├── appStore.js
+│   ├── commentsSlice.js
+├── App.jsx
+├── main.jsx
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

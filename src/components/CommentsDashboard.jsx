@@ -6,13 +6,16 @@ import {
   setSort,
   setPage,
   setPageSize,
+  setUser,
 } from '../utils/commentsSlice';
 import axios from 'axios';
 
+
 const pageSizes = [10, 50, 100];
 
-export default function CommentsGrid() {
+export default function CommentsDashboard() {
   const dispatch = useDispatch();
+ 
   const {
     comments,
     searchTerm,
@@ -22,12 +25,37 @@ export default function CommentsGrid() {
     pageSize,
   } = useSelector((state) => state);
 
+
+
+  const fetchData=async()=>{
+     try{
+    const res=axios.get('https://jsonplaceholder.typicode.com/comments')
+        dispatch(setComments(res.data));
+     }
+      catch(err){
+        console.log(err.message);
+      }
+  }
+
+
+  
+const fetchUserData=async()=>{
+    try {
+        const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+        console.log(res)
+        if (res.data.length > 0) {
+          dispatch(setUser(res.data[0]));
+        }
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+      }
+  }
+
+
   useEffect(() => {
     if (comments.length === 0) {
-      axios
-        .get('https://jsonplaceholder.typicode.com/comments')
-        .then((res) => dispatch(setComments(res.data)))
-        .catch(console.error);
+     fetchData();
+     fetchUserData();
     }
   }, []);
 
@@ -95,18 +123,18 @@ export default function CommentsGrid() {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>Post ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Comment</th>
-            </tr>
-          </thead>
+        <table className="table w-full border border-base-300">
+         <thead className="bg-base-300 text-base-content border-b border-base-300">
+       <tr>
+             <th className="px-4 py-2 border-r border-base-300">Post ID</th>
+              <th className="px-4 py-2 border-r border-base-300">Name</th>
+             <th className="px-4 py-2 border-r border-base-300">Email</th>
+              <th className="px-4 py-2">Comment</th>
+       </tr>
+         </thead>
           <tbody>
             {paginated.map((c) => (
-              <tr key={c.id}>
+              <tr key={c.id} className="bg-base-100 hover:bg-base-200 transition border-b border-base-300">
                 <td>{c.postId}</td>
                 <td>{c.name}</td>
                 <td>{c.email}</td>

@@ -7,6 +7,7 @@ const initialState = {
   sortOrder: null,
   page: 1,
   pageSize: 10,
+  user:null,
 };
 
 const commentsSlice = createSlice({
@@ -43,6 +44,9 @@ const commentsSlice = createSlice({
       state.pageSize = action.payload;
       state.page = 1;
     },
+    setUser:(state,action)=>{
+      state.user=action.payload;
+    }
   },
 });
 
@@ -52,6 +56,7 @@ export const {
   setSort,
   setPage,
   setPageSize,
+  setUser
 } = commentsSlice.actions;
 
 export default commentsSlice.reducer;
